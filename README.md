@@ -73,7 +73,9 @@ By building a dynamic pricing model using this data, I'm looking to create a win
 <h3>Demand and Supply Ratios</h3>
 <p>The function considers the <strong>demand-supply ratio</strong> to determine how much to adjust the price based on current conditions. It calculates separate ratios for demand and supply using a smoother transition with the natural logarithm function:</p>
 
-$$ \text{ratio} = \ln(1 + \text{value} / \text{threshold}) $$
+```math
+\text{ratio} = \ln(1 + \text{value} / \text{threshold})
+```
 
 <ul>
     <li><strong>value:</strong> represents the current number of riders (for demand) or number of drivers (for supply).</li>
@@ -85,9 +87,9 @@ $$ \text{ratio} = \ln(1 + \text{value} / \text{threshold}) $$
 <h3>Demand and Supply Multipliers</h3>
 <p>The function applies thresholds (demand_threshold_low, demand_threshold_high, supply_threshold_low, and supply_threshold_high) to ensure the multipliers don't become too extreme. Here's the calculation of the multipliers:</p>
 
-$$
+```math
 \text{multiplier} = \max\left(\text{ratio}, \text{threshold\_low}\right) \left(\frac{\text{threshold\_high}}{\text{threshold\_low}}\right)^\text{ratio}
-$$
+```
 
 <ul>
     <li><strong>ratio:</strong> The calculated demand or supply ratio from the previous step</li>
@@ -98,9 +100,9 @@ $$
 <h3>Adjusted Ride Cost</h3>
 <p>Finally, the function calculates the adjusted ride cost by multiplying the historical cost with both the demand and supply multipliers:</p>
 
-$$
+```math
 \text{adjusted\_cost} = \text{historical\_cost} \times \text{demand\_multiplier} \times \text{supply\_multiplier}
-$$
+```
 
 <h2>Model Building and Evaluation</h2>
 <p>This section describes a machine learning model that was built to predict dynamic ride prices.</p>
@@ -154,13 +156,15 @@ $$
 
 <h4>Correlation between the actual and predicted costs</h4>
 
-![The plot illustrates a robust positive correlation between the predicted and actual costs.](<markdown_images/Screenshot 2024-03-26 at 7.34.08 PM.png>)
+<img width="770" alt="Screenshot 2024-03-26 at 7 34 08 PM" src="https://github.com/Asante-Emma/dynamic-ride-price-prediction/assets/122864196/e645a6a5-b3d4-4780-a01e-b7bce04808ac">
 
 <p>The plot above illustrates a robust positive correlation between the predicted and actual costs.</p>
 
 <h4>Feature Importance</h4>
-
-![Feature Importance](<markdown_images/Screenshot 2024-03-26 at 7.45.39 PM.png>)
+<img width="766" alt="Screenshot 2024-03-26 at 7 45 39 PM" src="https://github.com/Asante-Emma/dynamic-ride-price-prediction/assets/122864196/cf678b0d-6717-4343-b48c-c2b2f4ae48f6">
 
 <h2>Summary</h2>
 <p><strong>Machine learning predicts ride prices!</strong> The model uses historical data (riders, drivers, location, etc.) to forecast dynamic ride costs, achieving an R-squared of 0.87. This paves the way for optimized pricing strategies in ride-hailing services.</p>
+
+<h2>Reference</h2>
+Kharwal, Aman. "Dynamic Pricing Strategy using Python." 26 June 2023. https://thecleverprogrammer.com/2023/06/26/dynamic-pricing-strategy-using-python/
